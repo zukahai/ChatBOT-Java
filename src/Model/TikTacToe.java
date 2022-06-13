@@ -21,4 +21,20 @@ public class TikTacToe {
 			}
 		}
 	}
+	
+	public void newGame() {
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				board[i][j] = '_';
+		if (Math.random() < 0.5)
+			board[1][1] = 'o';
+	}
+	
+	public boolean isNull(int x, int y) {
+		return board[x][y] == '_';
+	}
+	
+	public int value() {
+		return minimax.evaluate(board);
+	}
 }

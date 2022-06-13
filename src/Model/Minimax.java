@@ -115,7 +115,7 @@ public class Minimax{
 	    	bestMove.col = bestMove.row = 1;
 	    }
 	
-	    System.out.printf("The value of the best Move " +  "is : %d\n\n", bestVal);
+//	    System.out.printf("The value of the best Move " +  "is : %d\n\n", bestVal);
 	    return bestMove;
 	}
 	
