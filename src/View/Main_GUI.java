@@ -42,6 +42,8 @@ import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 import javax.swing.JSlider;
 import javax.swing.JSeparator;
+import java.awt.Frame;
+import java.awt.Window.Type;
 
 public class Main_GUI extends JFrame {
 
@@ -85,10 +87,12 @@ public class Main_GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public Main_GUI() {
+		setType(Type.UTILITY);
+		setVisible(true);
 		//538 133
 		setBackground(Color.CYAN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 769, 484);
+		setBounds(100, 100, 769, 487);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -112,12 +116,12 @@ public class Main_GUI extends JFrame {
 		AllMessage.setEditable(false);
 		appendToPane(AllMessage, "BOT: " + "Xin ch\u00E0o, t\u00F4i c\u00F3 th\u1EC3 gi\u00FAp g\u00EC cho b\u1EA1n.\n", Color.red);
 		scrollPane.setViewportView(AllMessage);
-//		scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-//		    @Override
-//		    protected void configureScrollBarColors() {
-//		        this.thumbColor = new Color(255, 105, 180);
-//		    }
-//		});
+		scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+		    @Override
+		    protected void configureScrollBarColors() {
+		        this.thumbColor = new Color(250, 128, 114);
+		    }
+		});
 		
 		GamePanel = new JPanel();
 		GamePanel.setVisible(false);
@@ -214,7 +218,6 @@ public class Main_GUI extends JFrame {
 		infoPanel.add(github);
 		
 		setLocationRelativeTo(null);
-		setVisible(true);
 		setResizable(false);
 		
 		waitGame = new Timer(1000, new ActionListener() {

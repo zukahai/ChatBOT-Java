@@ -51,7 +51,7 @@ public class Test extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Ch\u00E0o");
-		lblNewLabel_1.setForeground(new Color(255, 140, 0));
+		lblNewLabel_1.setForeground(new Color(250, 128, 114));
 		lblNewLabel_1.setBounds(90, 157, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
