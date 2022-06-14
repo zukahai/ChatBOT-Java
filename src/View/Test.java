@@ -6,8 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Model.Music;
+
 import javax.swing.JLabel;
 import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Test extends JFrame {
 
@@ -45,9 +51,19 @@ public class Test extends JFrame {
 		lblNewLabel.setBounds(137, 153, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("\u0110\u00E3 b\u1EAFt \u0111\u1EA7u tr\u00F2 ch\u01A1i TikTacToe");
+		JLabel lblNewLabel_1 = new JLabel("Ch\u00E0o");
 		lblNewLabel_1.setForeground(new Color(255, 140, 0));
 		lblNewLabel_1.setBounds(90, 157, 46, 14);
 		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Music music = new Music();
+				music.sound(1);
+			}
+		});
+		btnNewButton.setBounds(152, 32, 104, 48);
+		contentPane.add(btnNewButton);
 	}
 }

@@ -22,6 +22,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JDesktopPane;
 import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.JTextPane;
 import javax.swing.text.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -34,6 +36,10 @@ import java.awt.Insets;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.Rectangle;
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+import javax.swing.JSlider;
+import javax.swing.JSeparator;
 
 public class Main_GUI extends JFrame {
 
@@ -43,7 +49,18 @@ public class Main_GUI extends JFrame {
 	public JTextField textField_1;
 	public JButton bt[][] = new JButton[3][3];
 	public JButton send;
-	private JPanel panel_1;
+	private JPanel SendPanel;
+	public JPanel GamePanel, infoPanel;
+	int count = 0;
+	int indexAvata = 1;
+	int NAvata = 3;
+	Timer waitGame, avataSlide;
+	JLabel name;
+	
+	String Name[] = {"", "HaiZuka", "Mỹ Linh", "^^"};
+	private JButton facebook;
+	private JButton youtube;
+	private JButton github;
 
 	/**
 	 * Launch the application.
@@ -66,9 +83,10 @@ public class Main_GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public Main_GUI() {
+		//538 133
 		setBackground(Color.CYAN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 729, 484);
+		setBounds(100, 100, 769, 484);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -99,24 +117,25 @@ public class Main_GUI extends JFrame {
 //		    }
 //		});
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(517, 133, 172, 172);
-		panel.setLayout(new GridLayout(3, 3));
+		GamePanel = new JPanel();
+		GamePanel.setVisible(false);
+		GamePanel.setBounds(535, 122, 172, 172);
+		GamePanel.setLayout(new GridLayout(3, 3));
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++) {
 				bt[i][j] = new JButton();
 				bt[i][j].setActionCommand((i * 3 + j) + "");
 				bt[i][j].setBorder(new LineBorder(new Color(255, 204, 204), 1));
-				panel.add(bt[i][j]);
+				GamePanel.add(bt[i][j]);
 			}
-		contentPane.add(panel);
+		contentPane.add(GamePanel);
 		
-		panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 204, 204));
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_1.setBounds(34, 392, 463, 30);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
+		SendPanel = new JPanel();
+		SendPanel.setBackground(new Color(255, 204, 204));
+		SendPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		SendPanel.setBounds(34, 392, 463, 30);
+		contentPane.add(SendPanel);
+		SendPanel.setLayout(null);
 		
 		message = new JTextField();
 		message.setForeground(Color.RED);
@@ -124,7 +143,7 @@ public class Main_GUI extends JFrame {
 		message.setBounds(new Rectangle(13, 0, 0, 0));
 		message.setBorder(null);
 		message.setBounds(2, 2, 404, 26);
-		panel_1.add(message);
+		SendPanel.add(message);
 		message.setBackground(new Color(255, 204, 204));
 		message.setFont(new Font("NVN Daikon", Font.BOLD, 15));
 		message.setColumns(10);
@@ -135,11 +154,72 @@ public class Main_GUI extends JFrame {
 		send.setFont(new Font("NVN Daikon", Font.PLAIN, 9));
 		send.setBackground(new Color(255, 153, 102));
 		send.setBounds(406, 4, 54, 22);
-		panel_1.add(send);
+		SendPanel.add(send);
+		
+		infoPanel = new JPanel();
+		infoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		infoPanel.setBounds(525, 39, 198, 383);
+		infoPanel.setBackground(new Color(255, 204, 204));
+		contentPane.add(infoPanel);
+		infoPanel.setLayout(null);
+		
+		JButton avata = new JButton("");
+		avata.setBounds(10, 11, 178, 226);
+		avata.setIcon(getIcon("Avata1", avata.getWidth(), avata.getHeight()));
+		infoPanel.add(avata);
+		
+		name = new JLabel(Name[1], SwingConstants.CENTER);
+		name.setFont(new Font("NVN Daikon", Font.BOLD, 20));
+		name.setBounds(10, 259, 178, 26);
+		infoPanel.add(name);
+		
+		facebook = new JButton("");
+		facebook.setBounds(24, 311, 35, 35);
+		infoPanel.add(facebook);
+		
+		JSeparator separator = new JSeparator();
+		separator.setForeground(new Color(0, 0, 0));
+		separator.setBounds(10, 290, 178, 2);
+		infoPanel.add(separator);
+		
+		youtube = new JButton("");
+		youtube.setBounds(82, 311, 35, 35);
+		infoPanel.add(youtube);
+		
+		github = new JButton("");
+		github.setBounds(140, 311, 35, 35);
+		infoPanel.add(github);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
+		
+		waitGame = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (++count == 5) {
+					setPanelInfo();
+					count = 0;
+					waitGame.stop();
+				}
+			}
+		});
+		
+		avataSlide = new Timer(3000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (++indexAvata > NAvata) {
+					indexAvata = 1;
+				}
+				avata.setIcon(getIcon("Avata" + indexAvata, avata.getWidth(), avata.getHeight()));
+				name.setText(Name[indexAvata]);
+			}
+		});
+		avataSlide.start();
 	}
 	
 	public void setIconButton(char board[][]) {
@@ -167,5 +247,19 @@ public class Main_GUI extends JFrame {
 		tp.setCharacterAttributes(aset, false);
 		tp.replaceSelection(msg);
 		AllMessage.setEditable(false);
+	}
+	
+	public void setPanelGame() {
+		GamePanel.setVisible(true);
+		infoPanel.setVisible(false);
+	}
+	
+	public void setPanelInfo() {
+		GamePanel.setVisible(false);
+		infoPanel.setVisible(true);
+	}
+	
+	public void waitGame() {
+		waitGame.start();
 	}
 }

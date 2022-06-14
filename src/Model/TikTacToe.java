@@ -36,6 +36,10 @@ public class TikTacToe {
 		return board[x][y] == '_';
 	}
 	
+	public boolean isEnd() {
+		return !minimax.isMovesLeft(board);
+	}
+	
 	public int value() {
 		return minimax.evaluate(board);
 	}

@@ -34,6 +34,32 @@ public class BOT {
 //		-----------------------------------------------
 		
 		in = new Intents();
+		in.setTag("Music");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Hát đi");
+                add("Có thể hát không");
+                add("hát được không");
+                add("muốn nghe nhạc");
+                add("Hát cho");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Chợt về giữa sương mờ\r\n"
+                		+ "Loay hoay anh ngỡ như đang mơ em\r\n"
+                		+ "Ngày nào vẫn hoang sơ\r\n"
+                		+ "Ai biết cứ mong chờ\r\n"
+                		+ "Rồi khi bóng đêm tàn\r\n"
+                		+ "Hoang mang giữ lấy giấc mơ đang tan dần\r\n"
+                		+ "Khi anh lang thang một mình bơ vơ...");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------
+		
+		in = new Intents();
 		in.setTag("SayHi");
 		in.setPatterns(new ArrayList<String>() {
             {
@@ -74,6 +100,8 @@ public class BOT {
         });
 		intents.add(in);
 		
+//		-----------------------------------------------	
+		
 		in = new Intents();
 		in.setTag("win");
 		in.setPatterns(new ArrayList<String>() {
@@ -92,6 +120,23 @@ public class BOT {
 		
 //		-----------------------------------------------	
 		
+		in = new Intents();
+		in.setTag("end");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Game end");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Hoà mất rồi");
+                add("Hoà rồi, cũng khá đấy");
+                add("Hoà rồi, làm lại ván nữa không?");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
 		in = new Intents();
 		in.setTag("SayBye");
 		in.setPatterns(new ArrayList<String>() {

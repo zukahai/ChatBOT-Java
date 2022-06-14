@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import Model.BOT;
 import Model.Minimax;
 import Model.Move;
+import Model.Music;
 import Model.TikTacToe;
 import View.Main_GUI;
 
@@ -27,6 +28,11 @@ public class ChatBOT {
 					if (index == 0) {
 						tikTacToe.newGame();
 						gui.setIconButton(tikTacToe.board);
+						gui.setPanelGame();
+					}
+					if (index == 1) {
+						Music music = new Music();
+						music.sound(0);
 					}
 					gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage(gui.message.getText()) + "\n", Color.red);
 					gui.message.setText("");
@@ -49,8 +55,11 @@ public class ChatBOT {
 							gui.setIconButton(tikTacToe.board);
 							if (tikTacToe.value() == 10) {
 								gui.appendToPane(gui.AllMessage, "BOT: " + "B\u1EA1n \u0111\u00E3 thua r\u1ED3i,\nch\u00FAc b\u1EA1n may m\u1EAFn l\u1EA7n sau nh\u00E9.\n", colorBOT);
-							}
-							else if (tikTacToe.bestval == 10)
+								gui.waitGame();
+							} else if (tikTacToe.isEnd()) {
+								gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage("game end") + "\n", colorBOT);
+								gui.waitGame();
+							} else if (tikTacToe.bestval == 10)
 								gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage("game win") + "\n", colorBOT);
 							else
 								gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage("game hoa") + "\n", colorBOT);
