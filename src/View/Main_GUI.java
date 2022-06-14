@@ -1,49 +1,33 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
-import javax.print.attribute.AttributeSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.net.URI;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import javax.swing.JDesktopPane;
-import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.JTextPane;
-import javax.swing.text.*;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Insets;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.Rectangle;
 import javax.swing.JLabel;
-import javax.swing.JToggleButton;
-import javax.swing.JSlider;
 import javax.swing.JSeparator;
-import java.awt.Frame;
-import java.awt.Window.Type;
 
 public class Main_GUI extends JFrame {
 
@@ -93,6 +77,8 @@ public class Main_GUI extends JFrame {
 		setBackground(Color.CYAN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 769, 487);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -216,9 +202,6 @@ public class Main_GUI extends JFrame {
 		github.setIcon(getIcon("github",  github.getWidth(), github.getHeight()));
 		github.setBorder(null);
 		infoPanel.add(github);
-		
-		setLocationRelativeTo(null);
-		setResizable(false);
 		
 		waitGame = new Timer(1000, new ActionListener() {
 			

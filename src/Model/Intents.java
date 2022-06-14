@@ -1,6 +1,8 @@
 package Model;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class Intents {
 	ArrayList<String> patterns;
@@ -14,13 +16,22 @@ public class Intents {
 	}
 	
 	public boolean check(String text) {
-		text = text.toLowerCase();
+		text = removeAccent(text.toLowerCase());
 		for (String s : patterns) {
-			if (text.contains(s.toLowerCase()) && text.length() > 3)
+			s = removeAccent(s.toLowerCase());
+			if (text.contains(s) && text.length() > 2)
 				return true;
 		}
 			
 		return false;
+	}
+	
+	public String removeAccent(String s) {
+		String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		String ans = pattern.matcher(temp).replaceAll("");
+		ans = ans.replace("đ", "d").replace("Đ", "D");
+		return ans;
 	}
 
 	public void addPatterns(String pattern) {

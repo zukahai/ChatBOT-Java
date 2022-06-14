@@ -1,8 +1,10 @@
 package Model;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 public class BOT {
 	ArrayList<Intents> intents = new ArrayList<>();
