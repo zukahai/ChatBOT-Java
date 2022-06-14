@@ -17,11 +17,17 @@ public class ChatBOT {
 	BOT bot = new BOT();
 	Color colorBOT = Color.red;
 	public ChatBOT() {
+		tikTacToe.newGame();
 		gui.setIconButton(tikTacToe.board);
 		gui.send.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (gui.message.getText().length() > 0) {
 					gui.appendToPane(gui.AllMessage, "T\u00F4i: " + gui.message.getText() + "\n", Color.blue);
+					int index = bot.getIntents(gui.message.getText());
+					if (index == 0) {
+						tikTacToe.newGame();
+						gui.setIconButton(tikTacToe.board);
+					}
 					gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage(gui.message.getText()) + "\n", Color.red);
 					gui.message.setText("");
 				}
@@ -45,9 +51,9 @@ public class ChatBOT {
 								gui.appendToPane(gui.AllMessage, "BOT: " + "B\u1EA1n \u0111\u00E3 thua r\u1ED3i,\nch\u00FAc b\u1EA1n may m\u1EAFn l\u1EA7n sau nh\u00E9.\n", colorBOT);
 							}
 							else if (tikTacToe.bestval == 10)
-								gui.appendToPane(gui.AllMessage, "BOT: " + "S\u1EAFp thua r\u1ED3i \u0111\u00F3 nha, hehe ^^\n", colorBOT);
+								gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage("game win") + "\n", colorBOT);
 							else
-								gui.appendToPane(gui.AllMessage, "BOT: " + "N\u01B0\u1EDBc \u0111i hay \u0111\u1EA5y!\n", colorBOT);
+								gui.appendToPane(gui.AllMessage, "BOT: " + bot.solveMessage("game hoa") + "\n", colorBOT);
 						} else {
 							gui.appendToPane(gui.AllMessage, "BOT: " + "Vui l\u00F2ng \u0111\u00E1nh v\u00E0o \u00F4 c\u00F2n tr\u1ED1ng!\n", colorBOT);
 						}

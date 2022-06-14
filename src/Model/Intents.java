@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Intents {
 	ArrayList<String> patterns;
-	String tag;
+	String tag, message;
 	ArrayList<String> responses;
 	
 	public Intents() {
@@ -16,7 +16,7 @@ public class Intents {
 	public boolean check(String text) {
 		text = text.toLowerCase();
 		for (String s : patterns) {
-			if (s.toLowerCase().contains(text))
+			if (text.contains(s.toLowerCase()) && text.length() > 3)
 				return true;
 		}
 			
@@ -26,6 +26,17 @@ public class Intents {
 	public void addPatterns(String pattern) {
 		patterns.add(pattern);
 	}
+	
+	public void addResponses(String text) {
+		responses.add(text);
+	}
+	
+	public String randomMessage() {
+		int n = responses.size();
+		int random = (int) (Math.random() * 10000) % n;
+		return responses.get(random);
+	}
+	
 	public ArrayList<String> getPatterns() {
 		return patterns;
 	}
@@ -49,6 +60,12 @@ public class Intents {
 	public void setResponses(ArrayList<String> responses) {
 		this.responses = responses;
 	}
-	
-	
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 }

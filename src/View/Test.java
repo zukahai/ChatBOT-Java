@@ -45,7 +45,7 @@ public class Test extends JFrame {
 		lblNewLabel.setBounds(137, 153, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Xin ch\u00E0o, t\u00F4i c\u00F3 th\u1EC3 gi\u00FAp g\u00EC cho b\u1EA1n.");
+		JLabel lblNewLabel_1 = new JLabel("\u0110\u00E3 b\u1EAFt \u0111\u1EA7u tr\u00F2 ch\u01A1i TikTacToe");
 		lblNewLabel_1.setForeground(new Color(255, 140, 0));
 		lblNewLabel_1.setBounds(90, 157, 46, 14);
 		contentPane.add(lblNewLabel_1);

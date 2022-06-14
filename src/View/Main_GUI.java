@@ -33,6 +33,7 @@ import java.awt.Component;
 import java.awt.Insets;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import java.awt.Rectangle;
 
 public class Main_GUI extends JFrame {
 
@@ -111,16 +112,21 @@ public class Main_GUI extends JFrame {
 		contentPane.add(panel);
 		
 		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 204, 204));
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_1.setBounds(34, 392, 463, 30);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		message = new JTextField();
+		message.setForeground(Color.RED);
+		message.setMargin(new Insets(2, 12, 2, 2));
+		message.setBounds(new Rectangle(13, 0, 0, 0));
+		message.setBorder(null);
 		message.setBounds(2, 2, 404, 26);
 		panel_1.add(message);
 		message.setBackground(new Color(255, 204, 204));
-		message.setFont(new Font("NVN Daikon", Font.PLAIN, 12));
+		message.setFont(new Font("NVN Daikon", Font.BOLD, 15));
 		message.setColumns(10);
 		
 		send = new JButton();

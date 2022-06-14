@@ -12,6 +12,8 @@ public class TikTacToe {
 	}
 	
 	public void click(int x, int y) {
+		if (minimax.evaluate(board) == 10)
+			return;
 		if (board[x][y] == '_') {
 			board[x][y] = 'x';
 			if (minimax.isMovesLeft(board)) {
