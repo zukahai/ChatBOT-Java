@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/Controller/ChatBOT.java=UTF-8
 encoding//src/Model/BOT.java=UTF-8
-encoding//src/Model/CrawlData.java=UTF-8
 encoding//src/Model/Intents.java=UTF-8
+encoding//src/Model/Solve.java=UTF-8
 encoding//src/View/Main_GUI.java=UTF-8

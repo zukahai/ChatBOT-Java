@@ -8,9 +8,10 @@ import java.util.regex.Pattern;
 
 public class BOT {
 	ArrayList<Intents> intents = new ArrayList<>();
+	Solve solve = new Solve();
 	public BOT() {
 		Intents in;
-		
+
 		in = new Intents();
 		in.setTag("Game");
 		in.setPatterns(new ArrayList<String>() {
@@ -20,7 +21,11 @@ public class BOT {
                 add("Trò chơi");
                 add("game mới");
                 add("Trò chơi mới");
-                add("Tiktactoe");
+                add("Chơi mới");
+                add("Tiếp tục chơi");
+                add("Chơi lần nữa");
+                add("Chơi Tiktactoe");
+                add("Ván nữa");
             }
         });
 		in.setResponses(new ArrayList<String>() {
@@ -40,10 +45,13 @@ public class BOT {
 		in.setPatterns(new ArrayList<String>() {
             {
                 add("Hát đi");
+                add("Bạn hát đi");
+                add("Ca bài đi");
                 add("Có thể hát không");
                 add("hát được không");
                 add("muốn nghe nhạc");
                 add("Hát cho");
+                add("Muốn nghe hát");
             }
         });
 		in.setResponses(new ArrayList<String>() {
@@ -60,18 +68,50 @@ public class BOT {
 		intents.add(in);
 		
 //		-----------------------------------------------
+//		-----------------------------------------------
+		//2
+		in = new Intents();
+		in.setTag("BCC");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Bảng cửu chương");
+                add("Cửu chương");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		//3
+		in = new Intents();
+		in.setTag("calculate");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("=");
+                add("+");
+                add("-");
+                add("*");
+                add("/");
+                add("()");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
 		
 		in = new Intents();
 		in.setTag("SayHi");
 		in.setPatterns(new ArrayList<String>() {
             {
-                add("Chào");
+                add("Chào bạn");
+                add("Rất gặp bạn");
                 add("Xin chào");
                 add("Chào bạn");
                 add("Hi");
                 add("Hello");
                 add("Chào cậu");
-                add("Ơi");
+                add("Cậu ơi");
+                add("Chào");
             }
         });
 		in.setResponses(new ArrayList<String>() {
@@ -79,6 +119,81 @@ public class BOT {
                 add("Xin chào, rất vui được gặp bạn.");
                 add("Chào bạn, bạn cần mình giúp gì.");
                 add("Chào cậu, cậu có muốn chơi một trò chơi không.");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("HoiTham");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Hoi tham haizuka_2928324");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Bạn ơi, bạn còn đó không.");
+                add("Hãy thử nói \"Xin chào\" với tôi nào.");
+                add("Bạn ơi, bạn quên mình rồi nè :(");
+                add("Nếu không biết làm gì thì mình có thể chơi một trò chơi nè");
+                add("Hãy nói gì đó với tôi");
+                add("Hình như bạn đã quên mình rồi nè");
+                add("Không biết nói gì với mình đúng không nè?");
+                add("Tôi có thể hát đó, bạn có muốn nghe tôi hát không?");
+                add("À bạn chơi thắng mình được trò chơi TikTacToe đâu nhá, bạn muốn chơi lại hay bỏ cuộc nè ^^");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("HoiTham");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Tôi khoẻ");
+                add("Mình vẫn khoẻ");
+                add("Vẫn khoẻ");
+                add("Tôi khoẻ");
+                add("Khoẻ");
+                add("Mình Ổn");
+                add("Tôi bình thường");
+                add("Không sao");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Như thế thì tốt rồi.");
+                add("Tôi rất vui vì điều đó.");
+                add("Mong bạn luôn khoẻ mạnh, vui vẻ như thế này.");
+                add("Khoẻ là tốt rồi, có muốn chơi game không nào?");
+                add("Sức khoẻ là thứ quý nhất, ráng giữ gìn sức khoẻ nha.");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("HoiSucKhoe");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Bạn có khoẻ không");
+                add("Khoẻ không");
+                add("Bạn thế nào");
+                add("Bạn ổn không");
+                add("ổn không");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Cảm ơn bạn đã hỏi thăm, tôi ổn.");
+                add("Mình vẫn khoẻ, còn bạn thì sao?");
+                add("Mình lúc nào cũng ổn, mình chỉ lo cho sức khoẻ của bạn thôi.");
+                add("Vẫn đủ sức để chơi vài trăm ván game đó nha.");
+                add("Nhìn kìa, có người quan tâm tôi cơ đấy ^^");
             }
         });
 		intents.add(in);
@@ -97,7 +212,7 @@ public class BOT {
                 add("Nước đi hay đấy!");
                 add("May cho bạn đấy nha!");
                 add("Rất chi là căng thẳng");
-                add("Thế này chắc hoà mấy thôi");
+                add("Thế này chắc hoà mất thôi");
             }
         });
 		intents.add(in);
@@ -164,21 +279,30 @@ public class BOT {
 	}
 	
 	public int getIntents(String text) {
+		int max = -1;
+		int index = -1;
 		for (int i = 0; i < intents.size(); i++) {
 			Intents temp = intents.get(i);
-			if (temp.check(text))
-				return i;
+			int length = temp.check(text);
+			if (length > max) {
+				max = length;
+				index  = i;
+			}
 		}
-		return -1;
+		return index;
 	}
 	
 	public String solveMessage(String message) {
 		int index = getIntents(message);
 		if (index == -1)
-			return "Y\u00EAu c\u1EA7u \u0111ang \u0111\u01B0\u1EE3c x\u1EED l\u00FD ";
+			return "Y\u00EAu c\u1EA7u \u0111ang \u0111\u01B0\u1EE3c x\u1EED l\u00FD... ";
 		
-		if (index == 0) {
-			return intents.get(0).randomMessage();
+		if (index == 2) {
+			intents.get(index).setResponses(solve.BCC(message));
+		}
+		
+		if (index == 3) {
+			intents.get(index).setResponses(solve.calculate(message));
 		}
 		
 		return intents.get(index).randomMessage();

@@ -77,8 +77,6 @@ public class Main_GUI extends JFrame {
 		setBackground(Color.CYAN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 769, 487);
-		setLocationRelativeTo(null);
-		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -100,7 +98,7 @@ public class Main_GUI extends JFrame {
 		AllMessage.setAlignmentY(3.0f);
 		AllMessage.setFont(new Font("NVN Daikon", Font.PLAIN, 15));
 		AllMessage.setEditable(false);
-		appendToPane(AllMessage, "BOT: " + "Xin ch\u00E0o, t\u00F4i c\u00F3 th\u1EC3 gi\u00FAp g\u00EC cho b\u1EA1n.\n", Color.red);
+		appendToPane(AllMessage, "[BOT]: " + "Xin ch\u00E0o, t\u00F4i c\u00F3 th\u1EC3 gi\u00FAp g\u00EC cho b\u1EA1n.\n", Color.red);
 		scrollPane.setViewportView(AllMessage);
 		scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
 		    @Override
@@ -156,6 +154,7 @@ public class Main_GUI extends JFrame {
 		infoPanel.setLayout(null);
 		
 		JButton avata = new JButton("");
+		avata.setBorder(null);
 		avata.setBounds(10, 11, 178, 226);
 		avata.setIcon(getIcon("Avata1", avata.getWidth(), avata.getHeight()));
 		infoPanel.add(avata);
@@ -202,6 +201,9 @@ public class Main_GUI extends JFrame {
 		github.setIcon(getIcon("github",  github.getWidth(), github.getHeight()));
 		github.setBorder(null);
 		infoPanel.add(github);
+		
+		setLocationRelativeTo(null);
+		setResizable(false);
 		
 		waitGame = new Timer(1000, new ActionListener() {
 			
@@ -256,6 +258,11 @@ public class Main_GUI extends JFrame {
 		tp.setCharacterAttributes(aset, false);
 		tp.replaceSelection(msg);
 		AllMessage.setEditable(false);
+	}
+	
+	public void addMessage(JTextPane tp, String object, String message) {
+		appendToPane(tp, "[", Color.gray);
+		appendToPane(tp, "]", Color.gray);
 	}
 	
 	public void OpenWeb(String link) {

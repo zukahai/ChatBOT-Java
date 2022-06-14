@@ -8,6 +8,7 @@ public class Intents {
 	ArrayList<String> patterns;
 	String tag, message;
 	ArrayList<String> responses;
+	StringChain stringChain = new StringChain();
 	
 	public Intents() {
 		patterns  = new ArrayList<>();
@@ -15,15 +16,16 @@ public class Intents {
 		tag = "";
 	}
 	
-	public boolean check(String text) {
+	public int check(String text) {
 		text = removeAccent(text.toLowerCase());
+		int maxLength = -1;
 		for (String s : patterns) {
 			s = removeAccent(s.toLowerCase());
-			if (text.contains(s) && text.length() > 2)
-				return true;
+			if (s.length() == stringChain.LengthChain(s, text))
+				maxLength = Math.max(maxLength, s.length());
 		}
 			
-		return false;
+		return maxLength;
 	}
 	
 	public String removeAccent(String s) {
