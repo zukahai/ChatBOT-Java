@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.net.URI;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JDesktopPane;
@@ -32,6 +33,7 @@ import javax.swing.text.StyleContext;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Insets;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -174,7 +176,14 @@ public class Main_GUI extends JFrame {
 		infoPanel.add(name);
 		
 		facebook = new JButton("");
-		facebook.setBounds(24, 311, 35, 35);
+		facebook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OpenWeb("https://www.facebook.com/chiatayde/");
+			}
+		});
+		facebook.setBounds(24, 317, 35, 35);
+		facebook.setIcon(getIcon("facebook",  facebook.getWidth(), facebook.getHeight()));
+		facebook.setBorder(null);
 		infoPanel.add(facebook);
 		
 		JSeparator separator = new JSeparator();
@@ -183,11 +192,25 @@ public class Main_GUI extends JFrame {
 		infoPanel.add(separator);
 		
 		youtube = new JButton("");
-		youtube.setBounds(82, 311, 35, 35);
+		youtube.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OpenWeb("https://www.youtube.com/haizuka");
+			}
+		});
+		youtube.setBounds(82, 317, 35, 35);
+		youtube.setIcon(getIcon("youtube",  youtube.getWidth(), youtube.getHeight()));
+		youtube.setBorder(null);
 		infoPanel.add(youtube);
 		
 		github = new JButton("");
-		github.setBounds(140, 311, 35, 35);
+		github.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OpenWeb("https://github.com/zukahai");
+			}
+		});
+		github.setBounds(140, 317, 35, 35);
+		github.setIcon(getIcon("github",  github.getWidth(), github.getHeight()));
+		github.setBorder(null);
 		infoPanel.add(github);
 		
 		setLocationRelativeTo(null);
@@ -247,6 +270,15 @@ public class Main_GUI extends JFrame {
 		tp.setCharacterAttributes(aset, false);
 		tp.replaceSelection(msg);
 		AllMessage.setEditable(false);
+	}
+	
+	public void OpenWeb(String link) {
+		Desktop d = Desktop.getDesktop();
+		try {
+		    d.browse(new URI(link));
+		} catch (Exception e2) {
+		    e2.printStackTrace();
+		}
 	}
 	
 	public void setPanelGame() {

@@ -11,8 +11,11 @@ import Model.Music;
 
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URI;
 import java.awt.event.ActionEvent;
 
 public class Test extends JFrame {
@@ -23,16 +26,12 @@ public class Test extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Test frame = new Test();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Desktop d = Desktop.getDesktop();
+		try {
+		    d.browse(new URI("http://google.com"));
+		} catch (Exception e2) {
+		    e2.printStackTrace();
+		}
 	}
 
 	/**
@@ -66,4 +65,6 @@ public class Test extends JFrame {
 		btnNewButton.setBounds(152, 32, 104, 48);
 		contentPane.add(btnNewButton);
 	}
+	
+	 
 }
