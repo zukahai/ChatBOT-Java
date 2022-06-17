@@ -1,5 +1,7 @@
 package Model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -36,6 +38,8 @@ public class Solve {
 			return true;
 		if (c.equals("/"))
 			return true;
+		if (c.equals("^"))
+			return true;
 		return false;
 	}
 	
@@ -44,7 +48,72 @@ public class Solve {
 			return 1;
 		else if(c.equals("*") || c.equals("/"))
 			return 2;
+		else if(c.equals("^"))
+			return 3;
 		return 0;
+	}
+	
+	public ArrayList<String>  getTime() {
+		ArrayList<String> ans = new ArrayList<>();
+		LocalDateTime myDateObj = LocalDateTime.now();  
+	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH:mm:ss");  
+	    
+	    String formattedDate = myDateObj.format(myFormatObj);  
+	    ans.add(formattedDate + " rồi nè.");
+	    ans.add(formattedDate + " rồi đó");
+	    ans.add("Bây giờ là " + formattedDate);
+	    ans.add("Hiện tại là " + formattedDate);
+	    ans.add("Thời gian hiện tại là " + formattedDate);
+	    return ans;
+	}
+	
+	public String convertEnglishtoVi(String text) {
+		if (text.endsWith("Mon"))
+			return "Thứ 2";
+		if (text.endsWith("Tue"))
+			return "Thứ 3";
+		if (text.endsWith("Wed"))
+			return "Thứ 4";
+		if (text.endsWith("Thu"))
+			return "Thứ 5";
+		if (text.endsWith("Fri"))
+			return "Thứ 6";
+		if (text.endsWith("Sat"))
+			return "Thứ 7";
+		if (text.endsWith("Sun"))
+			return "Chủ nhật";
+		return text;
+	}
+	
+	public ArrayList<String>  getDate() {
+		ArrayList<String> ans = new ArrayList<>();
+		LocalDateTime myDateObj = LocalDateTime.now();  
+	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");  
+	    
+	    String formattedDate = myDateObj.format(myFormatObj);  
+	    ans.add(formattedDate + " rồi nè.");
+	    ans.add(formattedDate + " rồi đó.");
+	    ans.add("Hôm nay là ngày: " + formattedDate);
+	    ans.add("Hiện tại là ngày: " + formattedDate);
+	    ans.add("Ngày: " + formattedDate);
+	    return ans;
+	}
+	
+	public ArrayList<String>  getE() {
+		ArrayList<String> ans = new ArrayList<>();
+		LocalDateTime myDateObj = LocalDateTime.now();  
+//	    System.out.println("Before Formatting: " + myDateObj);  
+//	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("E, MMM dd yyyy HH:mm:ss");  
+	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("E");  
+	    
+	    String formattedDate = myDateObj.format(myFormatObj);  
+	    formattedDate = convertEnglishtoVi(formattedDate);
+	    ans.add(formattedDate + " rồi nè.");
+	    ans.add(formattedDate + " rồi đó.");
+	    ans.add("Hôm nay là " + formattedDate);
+	    ans.add("Hiện tại là " + formattedDate);
+	    ans.add("Hình như là " + formattedDate);
+	    return ans;
 	}
 	
 	public String valueMath(ArrayList<String> elementMath){
@@ -62,6 +131,7 @@ public class Solve {
                         case '-' : num = num2 - num1; break;
                         case '*' : num = num2 * num1; break;
                         case '/' : num = num2 / num1; break;
+                        case '^' : num = Math.pow(num2, num1); break;
                         default:
                             break;
                     }
@@ -149,8 +219,7 @@ public class Solve {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<String> a = new ArrayList();
-		System.out.println(new Solve().calculate("12+2*(10-9.5)"));
+		System.out.println(new Solve().getE());
 	}
 
 }

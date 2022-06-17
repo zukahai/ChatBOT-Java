@@ -92,12 +92,60 @@ public class BOT {
                 add("-");
                 add("*");
                 add("/");
+                add("^");
                 add("()");
             }
         });
 		intents.add(in);
 		
 //		-----------------------------------------------	
+		
+		//4
+		in = new Intents();
+		in.setTag("Time");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Mấy giờ");
+                add("Mấy giờ rồi");
+                add("Thời gian");
+                add("Hiện tại là");
+                add("Bây giờ là");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		//5
+		in = new Intents();
+		in.setTag("Date");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Ngày mấy nhỉ");
+                add("Ngày nhiêu");
+                add("Hôm nay ngày mấy");
+                add("Ngày mấy");
+                add("Ngày nào");
+                add("Ngày gì");
+                add("Ngày bao nhiêu");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		//6
+		in = new Intents();
+		in.setTag("Date");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Thứ mấy");
+                add("Hôm nay thứ mấy");
+            }
+        });
+		intents.add(in);
+				
+//				-----------------------------------------------
 		
 		in = new Intents();
 		in.setTag("SayHi");
@@ -194,6 +242,115 @@ public class BOT {
                 add("Mình lúc nào cũng ổn, mình chỉ lo cho sức khoẻ của bạn thôi.");
                 add("Vẫn đủ sức để chơi vài trăm ván game đó nha.");
                 add("Nhìn kìa, có người quan tâm tôi cơ đấy ^^");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("Khen");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Ghê");
+                add("Giỏi");
+                add("Giỏi quá");
+                add("Ghê nhá");
+                add("Víp quá");
+                add("Hay quá");
+                add("Đúng rồi");
+                add("Tuyệt vời");
+                add("Hay quá");
+                add("Quá hay");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Bạn quá khen rồi.");
+                add("Cảm ơn bạn đã khen");
+                add("Chuyện này bình thường mà Hihi ^^");
+                add("Rất vui khi được giúp bạn.");
+                add("Điều này trong khả năng của tôi mà.");
+                add("Rất vui khi đã giúp được bạn.");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("Cuoi");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("haha");
+                add("ha ha");
+                add("hahaha");
+                add("ha ha ha");
+                add(":)");
+                add(":))");
+                add(":D");
+                add("=)");
+                add("=))");
+                add("kha kha");
+                add("Hihi");
+                add("Hi hi");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Ơ kìa, sao bạn lại cười mình");
+                add("Bạn có vẻ vui nhỉ?");
+                add("Ha Ha Ha");
+                add("Cười người hôm trước, hôm sau người cười đó nha");
+                add("Hi Hi ^^");
+                add("Bạn cười trông đẹp lắm đó!");
+            }
+        });
+		intents.add(in);
+		
+
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("NguoiYeu");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Người yêu");
+                add("Người yêu chưa");
+                add("có Người yêu");
+                add("Yêu ai");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Bạn nói người yêu nào? Hehe ^^");
+                add("Mình đã làm gì có người yêu, mình đang sợ ế đây nè");
+                add("Yêu đương khó quá....");
+                add("Yêu ai để không phải khóc?");
+            }
+        });
+		intents.add(in);
+		
+//		-----------------------------------------------	
+		
+		in = new Intents();
+		in.setTag("Info");
+		in.setPatterns(new ArrayList<String>() {
+            {
+                add("Bạn là ai");
+                add("Cậu là ai");
+                add("Này là ai");
+                add("Ai đó");
+                add("Ai vậy");
+                add("Tên gì");
+            }
+        });
+		in.setResponses(new ArrayList<String>() {
+            {
+                add("Xin chào, mình là BOT của Hải, rất vui được gặp bạn.");
+                add("Mình là BOT của Hải nè, mình có thể giúp gì cho bạn.");
+                add("Mình là BOT được Hải tạo ra để giải quyết một số vấn đề của bạn.");
+                add("Mình là ai không quan trọng, quan trọng là mình có thể giúp bạn rất nhiều điều đó.");
             }
         });
 		intents.add(in);
@@ -303,6 +460,18 @@ public class BOT {
 		
 		if (index == 3) {
 			intents.get(index).setResponses(solve.calculate(message));
+		}
+		
+		if (index == 4) {
+			intents.get(index).setResponses(solve.getTime());
+		}
+		
+		if (index == 5) {
+			intents.get(index).setResponses(solve.getDate());
+		}
+		
+		if (index == 6) {
+			intents.get(index).setResponses(solve.getE());
 		}
 		
 		return intents.get(index).randomMessage();
